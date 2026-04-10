@@ -177,6 +177,12 @@
   flex-direction: column;
   gap: 12px;
   animation: fadeIn 0.4s ease;
+  cursor: pointer;
+}
+
+.note-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .note-card-header {
@@ -197,11 +203,22 @@
   color: var(--text);
   font-size: 14px;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .note-meta {
   font-size: 12px;
   color: var(--muted);
+}
+
+.note-body {
+  text-align: left;
 }
 
 .card-actions {
@@ -248,6 +265,73 @@
   background: var(--panel);
   border: 1px dashed var(--border);
   color: var(--muted);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 40;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 18, 28, 0.45);
+  border: none;
+}
+
+.modal-card {
+  position: relative;
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 24px;
+  width: min(560px, 92vw);
+  max-height: min(70vh, 620px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: floatIn 0.35s ease;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-content p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.modal-content {
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.modal-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 @keyframes fadeIn {
